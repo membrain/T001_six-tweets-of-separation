@@ -18,7 +18,9 @@ If you just want to clone the project and tinker without any expectation of addi
 contributions, install Git and execute the following terminal commands:
 	
 	prompt$ cd /path/to/your/parent-dir
-	prompt$ git clone git://github.com/membrain/T001_six-tweets-of-separation.git [optional-dir-name]
+	prompt$ git clone git://github.com/membrain/T001_six-tweets-of-separation.git
+	prompt$ cd T001_six-tweets-of-separation
+	prompt$ rake gems:install
 
 
 
