@@ -1,8 +1,8 @@
-= MemBrain - Six Tweets of Separation
+= Six Tweets of Separation
 
 == Description
 
-This repository contains the rails code for the MemBrain "six tweets of separation" application.  The 
+This repository contains the rails code for MemBrain's "six tweets of separation" application.  The 
 application allows the user to enter two Twitter account handles and then returns information about 
 how those two accounts are connected to one another.
 
@@ -11,7 +11,14 @@ how those two accounts are connected to one another.
 
 == Cloning/Forking Instructions
 
-
+If you wish to contribute to the project, please use your personal github account 
+to fork the project.  See github guides for detailed instructions.
+	
+If you just want to clone the project and tinker without any expectation of adding
+contributions, install Git and execute the following terminal commands:
+	
+	prompt$ cd /path/to/your/parent-dir
+	prompt$ git clone git://github.com/membrain/T001_six-tweets-of-separation.git [optional-dir-name]
 
 
 
