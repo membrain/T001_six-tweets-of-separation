@@ -1,8 +1,8 @@
 class FriendsController < ApplicationController
-  before_filter :twitter_login
+  
+  before_filter :get_twitter_client
 
   def index
-    @user = @twitter.user('jpdugan')
   end
   
   def show_common

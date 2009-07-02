@@ -3,24 +3,51 @@
 == Description
 
 This repository contains the rails code for MemBrain's "six tweets of separation" application.  The 
-application allows the user to enter two Twitter account handles and then returns information about 
+application allows the user to enter two Twitter screen names and then returns information about 
 how those two accounts are connected to one another.
 
 
 	
 
-== Cloning/Forking Instructions
+== Forking Instructions
 
-If you wish to contribute to the project, please use your personal github account 
-to fork the project.  See github guides for detailed instructions.
+First, log into your github account.
+
+Then, return to this page and click on the Fork button above.  Github will clone the project into your 
+account.  You automatically have full rights to the forked project.  
+
+Github has a feature that will track all of the commits to all forked branches.  The gatekeepers of the
+root project will be able to integrate your changes directly through github.  To notify the gatekeepers
+of your changes, return to the main project page and click the Pull Request button.
+
+
+
+
+== Cloning Your Fork & Getting Set Up
+
+Click on the icon after the url labeled Your Clone Url to add that value to your clipboard.
 	
-If you just want to clone the project and tinker without any expectation of adding
-contributions, install Git and execute the following terminal commands:
+Now, open a terminal and enter the following commands (or similar for Windows users):
 	
 	prompt$ cd /path/to/your/parent-dir
-	prompt$ git clone git://github.com/membrain/T001_six-tweets-of-separation.git
+	prompt$ git clone <paste Your Clone URL from your fork (no brackets)>
 	prompt$ cd T001_six-tweets-of-separation
 	prompt$ rake gems:install
+	prompt$ rake db:migrate
+	
+The credentials to the Twitter API are stored in a YAML file located at ${PROJECT-ROOT}/config/twitter.yml.
+Because the file contains sensitive information, it is not tracked by the git repository.  The first time
+you start the application, Rails will generate a file in the proper location with dummy credentials.  You
+will need to edit the file for authentication to occur.  Please speak with another MemBrain member for 
+the credentials to use.
+
+To start the web server included with Ruby on Rails, open a terminal and enter the following commands:
+
+	prompt$ cd /path/to/your/parent-dir/T001_six-tweets-of-separation
+	prompt$ ruby script/server
+
+Open a web browser and go to http://localhost:3000/.
+
 
 
 
