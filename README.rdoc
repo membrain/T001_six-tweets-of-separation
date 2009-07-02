@@ -7,6 +7,18 @@ application allows the user to enter two Twitter screen names and then returns i
 how those two accounts are connected to one another.
 
 
+
+
+== A Quick Note
+
+If you intend to contribute to the root project (i.e., the repository on this page), please follow
+the guidelines established in the sections entitled "Forking Instructions", "Cloning Your Fork & 
+Getting Set Up", and "Updating Your Fork".
+
+If you don't know git, don't want to, and never intend to contribute to the root project, please 
+follow the guidelines established in the section entitled "Fork That".
+
+
 	
 
 == Forking Instructions
@@ -46,7 +58,38 @@ To start the web server included with Ruby on Rails, open a terminal and enter t
 	prompt$ cd /path/to/your/parent-dir/T001_six-tweets-of-separation
 	prompt$ ruby script/server
 
-Open a web browser and go to http://localhost:3000/.
+Open a web browser and go to http://localhost:3000.
+
+
+
+
+== Updating Your Fork
+
+If you haven't already, add a remote entry for the public clone url of the root project:
+
+	prompt$ git remote add membrain git://github.com/membrain/T001_six-tweets-of-separation.git
+
+Fetch a copy of that remote project into a local branch of your forked project:
+
+	prompt$ git fetch membrain master:[new-local-branch]
+	
+Merge this new branch into your working branch normally.  See github guides or the internets for
+merge help.
+
+
+
+
+
+== Fork That
+
+If you have no intention of pushing changes back to the root project and don't want to learn anything about
+git, forget forking.  Just follow the steps in the section entitled "Cloning Your Fork & Getting Set Up" 
+above with one exception--use the public clone url from this page instead of the private clone url from 
+a forked project.
+
+If the project has been updated since the last time you cloned it, just delete your local copy and repeat 
+the steps above.
+
 
 
 
