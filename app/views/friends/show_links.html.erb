@@ -1,0 +1,5 @@
+<h1><%=@elapsed%> seconds elapsed.</h1>
+<% @links.each_with_index do |user, idx| %>
+  <p><h2><%=user.name%></h2></p>
+  <% if idx < @links.length-1 %><p><%= image_tag("down_arrow.jpg", :width => 30, :height => 30) %></p> <% end %>
+<% end %>
