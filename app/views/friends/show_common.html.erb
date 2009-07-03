@@ -1,0 +1,21 @@
+<h1>Shared Friends</h1>
+
+<p><%= "#{@tweeter1.name}: #{@tweeter1.friends.length} friends" %></p>
+<p><%= "#{@tweeter2.name}: #{@tweeter2.friends.length} friends" %></p>
+<p><%= "Shared: #{@shared.length} friends" %></p>
+
+<hr>
+
+<% @shared.each do |t| %>
+	<div>
+ 		<%= "#{t.name} (#{t.screen_name})" %>
+	</div>
+	<hr>
+<% end %>
+
+<p>
+	Elapsed time: <%= @elapsed %> seconds.
+</p>
+<p>
+	<%= link_to "Back", root_path %>
+</p>
