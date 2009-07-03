@@ -30,7 +30,7 @@ account.  You automatically have full rights to the forked project.
 
 Github has a feature that will track all of the commits to all forked branches.  The gatekeepers of the
 root project will be able to integrate your changes directly through github.  To notify the gatekeepers
-of your changes, return to the main project page and click the Pull Request button.
+of your changes, go to the project page of YOUR FORK and click the Pull Request button.
 
 
 
