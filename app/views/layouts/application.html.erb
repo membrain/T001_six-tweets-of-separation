@@ -37,7 +37,9 @@
 <!--  basic page layout and generated content  -->
 <div id="Page" class="<%= controller.controller_name %>">
 	<div id="PageHeader">
-		<img src="/images/logo.gif">
+		<% link_to root_path do %>
+			<img src="/images/logo.gif">
+		<% end %>
 	</div>
 	<div id="PageBody">
 		<%= yield %>
