@@ -1,0 +1,283 @@
+/*-------------------------------------------------------
+
+Blue
+----
+dark 	=> #002E46
+medium 	=> #94CEF4
+light	=> #CCE2EC
+
+
+Green
+-----
+dark 	=> #6C7E3C
+medium 	=> #849A44
+light	=> #ACC24C
+
+
+Background
+----------
+
+green 	=> #ACC24C (gradient)
+brown	=> #352724
+blue	=> #CCE2EC
+
+
+-------------------------------------------------------*/
+
+
+/*-------------------------------------------------------
+   html selectors
+-------------------------------------------------------*/
+
+html {
+	height:				100%;
+}
+
+body {
+	font-family:		"Lucida Grande", verdana, arial, helvetica, sans-serif;
+	margin:				0;
+	height:				100%;
+	background-image:	url('../images/body_bg.jpg');
+	background-repeat:	repeat-x;
+	background-color:	#CCE2EC;
+}
+
+form {
+	margin:				0;
+}
+
+img {
+	border:				0;
+}
+
+a:active {
+	outline:			none;	/* removes annoying click borders */
+}
+
+a:focus {
+	-moz-outline-style: none;	/* removes annoying click borders */
+}
+
+
+
+/*-------------------------------------------------------
+   page
+-------------------------------------------------------*/
+
+#Page {
+	margin:				0 auto;
+	width:				70%;
+	min-width:			700px;
+	height:				100%;
+}
+
+
+
+/*-------------------------------------------------------
+   page header
+-------------------------------------------------------*/
+
+#PageHeader {
+	margin:				0;
+	padding:			10px;
+	height:				60px;
+}
+
+
+
+/*-------------------------------------------------------
+   page body
+-------------------------------------------------------*/
+
+#PageBody {
+	margin:				0;
+	padding:			0;
+	border:				2px solid #352724;
+	background-color:	#FFF;
+}
+
+#PageBody h2 {
+	margin:				0;
+	padding:			10px 0 20px 0;
+	font-size:			16px;
+	color:				#225;
+}
+
+#PageBody h3 {
+	margin:				0;
+	padding:			10px 0 20px 0;
+	font-size:			16px;
+	color:				#DD7700;
+}
+
+#PageBody .search_container {
+	background-color:	#DDD;
+	border-bottom:		2px solid #352724;
+	padding:			10px 20px;
+}
+
+#PageBody .search_container form {
+	margin-bottom:		10px;
+}
+
+#PageBody .search_container label {
+	font-size:			14px;
+	color:				#352724;
+	padding-right:		2px;
+}
+
+#PageBody .search_container .button {
+	font-size:			16px;
+}
+
+#PageBody .search_container .inline {
+	display:			inline-block;
+	padding-right:		24px;
+	vertical-align:		top;
+}
+
+#PageBody .search_container .main {
+	font-size:			16px;
+}
+
+#PageBody .result_container {
+	padding:			20px;
+	min-height:			400px;
+}
+
+
+
+/*-------------------------------------------------------
+   page footer
+-------------------------------------------------------*/
+
+#PageFooter {
+	margin:				0;
+	padding:			0;
+}
+
+#PageFooter span {
+	display:			inline-block;
+	padding:			4px 4px 20px 4px;
+	width:				45%;
+	font-size:			10px;
+	color:				#225;
+}
+
+#PageFooter a {
+	font-size:			10px;
+	color:				#225;
+	text-decoration:	underline;
+}
+
+#PageFooterCopyright {
+	float:				left;
+}
+
+#PageFooterPoweredBy {
+	float:				right;
+	text-align:			right;
+}
+
+
+
+/*-------------------------------------------------------
+   javascript warning
+-------------------------------------------------------*/
+
+#JavascriptDisabledNotification {
+	padding:			20px 40px 40px 40px;
+	background:			#352724;
+}
+
+#JavascriptDisabledNotification .outer {
+	width:				50%;
+	background:			#FFF;
+	border:				1px solid #000;
+}
+
+#JavascriptDisabledNotification .inner,
+#JavascriptDisabledNotification h1 {
+	margin:				0;
+	padding:			8px 16px;
+}
+
+#JavascriptDisabledNotification h1 {
+	font-size:			18px;
+	background:			#CCE2EC;
+	color:				#000;
+	border-bottom:		1px solid #000;
+}
+
+#JavascriptDisabledNotification h2 {
+	margin:				0;
+	padding:			4px 0 8px 0;
+	font-size:			16px;
+}
+
+#JavascriptDisabledNotification p {
+	margin:				0;
+	padding:			4px 0;
+	font-size:			12px;
+}
+
+#JavascriptDisabledNotification a {
+	padding:			1px;
+	font-size:			12px;
+	text-decoration:	none;
+}
+
+#JavascriptDisabledNotification a:link,
+#JavascriptDisabledNotification a:visited {
+	color:				#C00;
+}
+
+#JavascriptDisabledNotification a:hover {
+	background:			#C00;
+	color:				#FFF;
+}
+
+
+
+/*-------------------------------------------------------
+   rails specific classes (probably needs tweaking)
+-------------------------------------------------------*/
+
+.flash {
+	padding:			4px 8px;
+	width:				67%;
+}
+
+.fieldWithErrors {
+	display:			inline;
+}
+
+.fieldWithErrors label {
+	font-weight:		bold;
+}
+
+#errorExplanation {
+  	width:				400px;
+  	padding:			7px;
+  	padding-bottom:		12px;
+  	margin-bottom:		20px;
+}
+
+#errorExplanation h2 {
+  	text-align:			left;
+  	font-weight:		bold;
+  	padding:			5px 5px 5px 15px;
+  	font-size:			.8em;
+  	margin:				-7px;
+}
+
+#errorExplanation p {
+  	font-size:			.8em;
+  	margin-bottom:		0;
+  	padding:			5px;
+}
+
+#errorExplanation ul li {
+  	font-size:			.8em;
+  	list-style:			square;
+}
