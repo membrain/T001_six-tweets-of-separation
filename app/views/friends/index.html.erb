@@ -1,26 +1,35 @@
-<div class="search_container">
+<div id="SearchContainer">
 	
 	<!--  Instructions  -->
 	<h2>
 		Enter two Twitter screen names and start finding connections now!
 	</h2>
-	<% form_tag "/friends/show_common" do %>
+	
+	<!--  Search Form  -->
+	<% remote_form_for :search, :url => "/friends/search" do |f| %>
 
 		<span class="inline">
 			<label for="tweeter1">Screen Name:</label>
-			<%= text_field_tag :tweeter1, "", { :class => "main" } %>
+			<%= f.text_field :tweeter1, :class => "main" %>
 			
 			<br/>
 
 			<label for="tweeter2">Screen Name:</label>
-			<%= text_field_tag :tweeter2, "", { :class => "main" } %>
+			<%= f.text_field :tweeter2, :class => "main" %>
 		</span>
 		<span class="inline">
-			<%= submit_tag "Search", :class => "button" %>
+			<%= f.radio_button :type, "degrees", :checked => "checked" %>Find degrees of separation
+			<br />
+			<%= f.radio_button :type, "friends" %>Find shared friends
+		</span>
+		<span class="inline">
+			<%= f.submit "Search", :class => "button" %>
 		</span>
 
 	<% end %>
 </div>
-<div class="result_container">
+
+<!--  Search results area  -->
+<div id="ResultContainer">
 	Need to write remote forms and rjs templates to use this area.
 </div>

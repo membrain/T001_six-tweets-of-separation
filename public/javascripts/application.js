@@ -1,2 +1,39 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+/*--------------------------------------------------------------------
+  This object declares a namespace in which all the one-off scripts 
+  required by the application.
+--------------------------------------------------------------------*/
+
+// This is the application object.
+var app  = {}
+
+
+// This function forces focus to the first field of the search form.
+app.setFocus = function() {
+	var field = $("search_tweeter1")
+	if (field) {
+		field.focus();
+	}
+}
+
+
+
+/*--------------------------------------------------------------------
+  This call establishes event connections between user actions
+  and javascript event handlers.
+--------------------------------------------------------------------*/
+
+Event.observe(window, "load", function() {
+	
+	// Get dom references
+	var button = $("search_submit");
+	var result = $("ResultContainer");
+	
+	// Listen for events from search button
+	var fn = function() {
+		result.innerHTML = "Loading . . .";
+	}
+	button.observe("click", fn);
+	
+	// set initial focus to search field
+	app.setFocus();
+});

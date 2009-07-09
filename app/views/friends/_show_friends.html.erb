@@ -1,0 +1,10 @@
+<h3>Shared Friends</h3>
+
+<p><%= "#{@response["t1"].name}: #{@response["t1"].friends.length} friends" %></p>
+<p><%= "#{@response["t2"].name}: #{@response["t2"].friends.length} friends" %></p>
+<p><%= "Shared: #{@response["collection"].length} friends" %></p>
+
+<hr>
+
+
+<%= render :partial => "friends/tweeter", :collection => @response["collection"] %>

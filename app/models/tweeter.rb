@@ -42,10 +42,9 @@ class Tweeter < ActiveRecord::Base
     shared      = []
     if my_friends.length && her_friends.length
       my_friends.each do |m_f|
-        idx = her_friends.index { |item| item.screen_name == m_f.screen_name }
-        if !idx.nil?  
-          shared << her_friends[idx]
-        end
+        her_friends.each do |item|                                  # Change by @mdinstuhl.  His first
+          shared << item if m_f.screen_name == item.screen_name     # contributions to an open source
+        end                                                         # project.  Huzzah!
       end
     end
     shared
@@ -73,6 +72,8 @@ class Tweeter < ActiveRecord::Base
     a
   end
   
+
+
   #----------------------------------------------------------------------------
   # Private methods
   #----------------------------------------------------------------------------

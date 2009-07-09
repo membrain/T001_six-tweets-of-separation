@@ -16,7 +16,6 @@ light	=> #ACC24C
 
 Background
 ----------
-
 green 	=> #ACC24C (gradient)
 brown	=> #352724
 blue	=> #CCE2EC
@@ -110,41 +109,46 @@ a:focus {
 	color:				#DD7700;
 }
 
-#PageBody .search_container {
+#PageBody #SearchContainer {
 	background-color:	#DDD;
 	border-bottom:		2px solid #352724;
 	padding:			10px 20px;
 }
 
-#PageBody .search_container form {
+#PageBody #SearchContainer form {
 	margin-bottom:		10px;
 }
 
-#PageBody .search_container label {
+#PageBody #SearchContainer label {
 	font-size:			14px;
 	color:				#352724;
 	padding-right:		2px;
 }
 
-#PageBody .search_container .button {
+#PageBody #SearchContainer .button {
 	font-size:			16px;
 }
 
-#PageBody .search_container .inline {
+#PageBody #SearchContainer .inline {
 	display:			inline-block;
 	padding-right:		24px;
 	vertical-align:		top;
 }
 
-#PageBody .search_container .main {
+#PageBody #SearchContainer .main {
 	font-size:			16px;
 }
 
-#PageBody .result_container {
+#PageBody #ResultContainer {
 	padding:			20px;
 	min-height:			400px;
 }
 
+
+
+/*-------------------------------------------------------
+   containers
+-------------------------------------------------------*/
 
 
 /*-------------------------------------------------------
