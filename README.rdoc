@@ -11,47 +11,45 @@ how those two accounts are connected to one another.
 
 == A Quick Note
 
-If you intend to contribute to the root project (i.e., the repository on this page), please follow
-the guidelines established in the sections entitled "Forking Instructions", "Cloning Your Fork & 
-Getting Set Up", and "Updating Your Fork".
+If you are a MemBrain member and wish to contribute to the project, please establish a github account 
+and send your handle to jdugan@coroutine.com to be added as a collaborator.  All non-MemBrain 
+contributors will need to fork the project.
 
-If you don't know git, don't want to, and never intend to contribute to the root project, please 
-follow the guidelines established in the section entitled "Fork That".
+In either case, if you don't know git, don't want to, and never intend to contribute to the project, 
+just use the public clone url to make a copy for yourself (see Cloning Instructions and Getting Set Up
+for more details).
 
 
 	
 
-== Forking Instructions
+== Cloning Instructions
 
-First, log into your github account.
+If you are a MemBrain collaborator, clone the project with the private url:
 
-Then, return to this page and click on the Fork button above.  Github will clone the project into your 
-account.  You automatically have full rights to the forked project.  
-
-Github has a feature that will track all of the commits to all forked branches.  The gatekeepers of the
-root project will be able to integrate your changes directly through github.  To notify the gatekeepers
-of your changes, go to the project page of YOUR FORK and click the Pull Request button.
-
-
-
-
-== Cloning Your Fork & Getting Set Up
-
-Click on the icon after the url labeled Your Clone Url to add that value to your clipboard.
-	
-Now, open a terminal and enter the following commands (or similar for Windows users):
-	
 	prompt$ cd /path/to/your/parent-dir
-	prompt$ git clone <paste Your Clone URL from your fork (no brackets)>
+	prompt$ git clone git@github.com:membrain/T001_six-tweets-of-separation.git
 	prompt$ cd T001_six-tweets-of-separation
 	prompt$ rake gems:install
 	prompt$ rake db:migrate
 	
-The credentials to the Twitter API are stored in a YAML file located at ${PROJECT-ROOT}/config/twitter.yml.
+Otherwise, delete any current instance of the project and clone a new copy with the
+public url:
+
+	prompt$ cd /path/to/your/parent-dir
+	prompt$ git clone git://github.com/membrain/T001_six-tweets-of-separation.git
+	prompt$ cd T001_six-tweets-of-separation
+	prompt$ rake gems:install
+	prompt$ rake db:migrate
+
+
+
+== Getting Set Up
+
+The credentials to the Twitter API are stored in a YAML file located at ${RAILS-ROOT}/config/twitter.yml.
 Because the file contains sensitive information, it is not tracked by the git repository.  The first time
 you start the application, Rails will generate a file in the proper location with dummy credentials.  You
 will need to edit the file for authentication to occur.  Please speak with another MemBrain member for 
-the credentials to use.
+the credentials to use.  Or use any valid credentials you like.
 
 To start the web server included with Ruby on Rails, open a terminal and enter the following commands:
 
@@ -63,33 +61,28 @@ Open a web browser and go to http://localhost:3000.
 
 
 
-== Updating Your Fork
+== Pulling & Pushing New Changes With Git
 
-If you haven't already, add a remote entry for the public clone url of the root project:
+First, as a rule you should not work in your local master branch.  When you work on a feature,
+create a new local branch and do your work there.  By doing so, you preserve a clean master
+branch, which makes integrations with the remote project less troublesome.  Use "git help" for 
+more information on the branch and checkout commands.
 
-	prompt$ git remote add membrain git://github.com/membrain/T001_six-tweets-of-separation.git
+Two bash scripts are included in the {RAILS-ROOT}/script/git folder of the project.  They are named
+hack and ship.  They automate the git commands needed to pull in changes from the remote master and 
+push changes to the remote master, respectively.  You'll want to copy these scripts to a directory 
+in your PATH so they can be invoked from anywhere at the terminal.  You may also wish to make an
+alias that runs hack, then rake (which runs all rails test defined to the project), then ship:
 
-Fetch a copy of that remote project into a local branch of your forked project:
-
-	prompt$ git fetch membrain master:[new-local-branch]
+	prompt$ alias hrs="hack && rake && ship"
 	
-Merge this new branch into your working branch normally.  See github guides or the internets for
-merge help.
+For more information on this workflow, please see this fine blog post:
 
-
-
-
-
-== Fork That
-
-If you have no intention of pushing changes back to the root project and don't want to learn anything about
-git, forget forking.  Just follow the steps in the section entitled "Cloning Your Fork & Getting Set Up" 
-above with one exception--use the public clone url from this page instead of the private clone url from 
-a forked project.
-
-If the project has been updated since the last time you cloned it, just delete your local copy and repeat 
-the steps above.
-
+	http://reinh.com/blog/2008/08/27/hack-and-and-ship.html
+	
+New Git users are encouraged to learn more about the rebase and merge commands to understand why this
+workflow makes sense.
+	
 
 
 
