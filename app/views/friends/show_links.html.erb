@@ -1,7 +1,0 @@
-<h1><%=@elapsed%> seconds elapsed.</h1>
-<% @links.each_with_index do |tweeter, idx| %>
-  <p><h2><%=tweeter.name%> - <%= tweeter.friends.length %></h2></p>
-  <% if idx < @links.length-1 %><p><%= image_tag("down_arrow.jpg", :width => 30, :height => 30) %></p> <% end %>
-<% end %>
-
-<%= link_to "Back", root_path %>
