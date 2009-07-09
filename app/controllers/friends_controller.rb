@@ -24,6 +24,46 @@ class FriendsController < ApplicationController
     @elapsed    = Time.now - start_time
   end
   
+
+  def show_degrees_of_separation
+    @t1         = Tweeter.get_by_screen_name(params[:tweeter1])
+    @t2         = Tweeter.get_by_screen_name(params[:tweeter2])
+    @connections = [@t1]
+    
+    # Get friends of user 1
+    t1_friends = @t1.get_friends
+    
+    # See if user 2 is a friend of user 1
+    t1_friends.each do |friend|
+       if friend.screen_name == @t2.screen_name
+         @connections << @t2
+         return
+       end
+    end
+    
+    t2_friends = @t2.get_friends
+    
+    # User 2 is not a friend of user 1.  Now, let's find the intersection of
+    # user 1's friends list and user 2's friends list.
+    t1_friends.each do |friend_1|
+      t2_friends.each do |friend_2|
+        if friend_1.screen_name == friend_2.screen_name
+          @connections << friend
+          @connections << @t2
+          return
+        end
+      end
+    end
+    
+    # Find the smaller of the 2 friends lists
+    if t1_friends.length < t2_friends
+      smaller = t1_friends
+    else
+      smaller = t2_friends
+    end
+    
+  end
+  
   # This function uses paramaters to invoke a six degrees of separation
   # algorithm.  It returns the result to the view template with a 
   # corresponding name.
