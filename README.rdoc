@@ -65,10 +65,13 @@ Open a web browser and go to http://localhost:3000.
 
 First, as a rule you should not work in your local master branch.  When you work on a feature,
 create a new local branch and do your work there.  By doing so, you preserve a clean master
-branch, which makes integrations with the remote project less troublesome.  Use "git help" for 
-more information on the branch and checkout commands.
+branch, which makes integrations with the remote project a snap.  Said differently, 
+the local master branch is your copy of the remote project.  Just as you wouldn't work directly
+on the remote code base, you shouldn't work on your local copy of it.  
 
-Two bash scripts are included in the {RAILS-ROOT}/script/git folder of the project.  They are named
+Use "git help" for more information on the branch and checkout commands.
+
+Two shell scripts are included in the {RAILS-ROOT}/script/git folder of the project.  They are named
 hack and ship.  They automate the git commands needed to pull in changes from the remote master and 
 push changes to the remote master, respectively.  You'll want to copy these scripts to a directory 
 in your PATH so they can be invoked from anywhere at the terminal.  You may also wish to make an
@@ -80,8 +83,13 @@ For more information on this workflow, please see this fine blog post:
 
 	http://reinh.com/blog/2008/08/27/hack-and-and-ship.html
 	
-New Git users are encouraged to learn more about the rebase and merge commands to understand why this
-workflow makes sense.
+New git users are encouraged to learn more about the rebase, merge, pull, and push commands to 
+understand why this workflow makes sense.
+
+	Note: The original versions of hack and ship I received were corrupted by the internets. I
+	had to retype the contents into clean files to get them to work on my mac.  The files in
+	{RAILS_ROOT}/script/git are the new, clean copies from my mac.  They should work for you,
+	but if you get weird errors running them, try creating the scripts manually.
 	
 
 
