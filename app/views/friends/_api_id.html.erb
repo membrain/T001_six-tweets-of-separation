@@ -1,0 +1,10 @@
+<% t = Tweeter.get_by_api_id(api_id) %>
+
+<div class="tweeter_detail">
+	<span class="image"><img src="<%= t.image_url %>"></span>
+	<span class="text" style="display: inline-block; vertical-align: top;">
+		<a target="_blank" href="http://twitter.com/<%= t.screen_name %>"><%= t.screen_name %></a><br/>
+		<span class="name"><%= t.name %></span>
+		<span class="location"><%= " | #{t.location}" if t.location %></span>
+	</span>
+</div>

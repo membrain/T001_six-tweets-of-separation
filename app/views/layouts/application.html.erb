@@ -25,7 +25,7 @@
 		    <p>This site requires a browser feature called <strong>JavaScript</strong>. All modern browsers 
 			support JavaScript. You probably just need to change a setting in order to turn it on.</p>
 		    <p>Please see: <a href="http://www.google.com/support/bin/answer.py?answer=23852">How to enable JavaScript in your browser</a>.</p>
-		    <p>If you use ad-blocking software, it may require you to allow JavaScript from <strong>sixtweetsofseparation.com</strong>.</p>
+		    <p>If you use ad-blocking software, it may require you to allow JavaScript from <strong>sixtweepsofseparation.com</strong>.</p>
 		    <p>Once you've enabled JavaScript you can <a href="">try loading this page again</a>.</p>
 		    <p>Thank you.</p>
 		</div>
@@ -38,7 +38,8 @@
 <div id="Page" class="<%= controller.controller_name %>">
 	<div id="PageHeader">
 		<% link_to root_path do %>
-			<img src="/images/logo.gif">
+			<span><img src="/images/logo.gif"></span>
+			<h1>Six Tweeps of Separation</h1>
 		<% end %>
 	</div>
 	<div id="PageBody">
@@ -46,10 +47,10 @@
 	</div>
 	<div id="PageFooter">
 		<span id="PageFooterCopyright">
-			Copyright 2009 MemBrain
+			<!-- Copyright &copy; 2009 --> 
 		</span>
 		<span id="PageFooterPoweredBy">
-			Courtesy of <a target="_blank" href="http://membrain.ws">MemBrain</a>
+			<%= get_courtesy_of_text %>
 		</span>
 	</div>
 </div>

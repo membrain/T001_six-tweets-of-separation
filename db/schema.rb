@@ -9,16 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090702222709) do
-
-  create_table "friends", :id => false, :force => true do |t|
-    t.integer "tweeter_id", :null => false
-    t.integer "friend_id",  :null => false
-  end
+ActiveRecord::Schema.define(:version => 20090711175352) do
 
   create_table "tweeters", :force => true do |t|
+    t.integer  "api_id",      :null => false
     t.string   "name",        :null => false
     t.string   "screen_name", :null => false
+    t.string   "location"
+    t.string   "image_url",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

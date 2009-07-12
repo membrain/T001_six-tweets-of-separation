@@ -82,6 +82,19 @@ a:focus {
 	height:				60px;
 }
 
+#PageHeader a {
+	text-decoration:	none;
+}
+
+#PageHeader h1 {
+	margin:				0;
+	padding:			20px 0 0 0;
+	display: 			inline-block;
+	vertical-align:		top;
+	font-size:			26px;
+	color:				#352724;
+}
+
 
 
 /*-------------------------------------------------------
@@ -284,4 +297,46 @@ a:focus {
 #errorExplanation ul li {
   	font-size:			.8em;
   	list-style:			square;
+}
+
+
+
+/*-------------------------------------------------------
+   search results
+-------------------------------------------------------*/
+
+.tweeter_detail {
+	padding:			8px 0;
+}
+
+.tweeter_detail .image {
+	display:			inline-block;
+	padding-right:		8px;
+}
+
+.tweeter_detail img {
+	border:				1px solid #352724;
+}
+
+.tweeter_detail .text {
+	display:			inline-block;
+	vertical-align:		top;
+	padding-top:		2px;
+}
+
+.tweeter_detail .text a {
+	font-size:			16px;
+	font-weight:		bold;
+	color:				#0084B4;
+	text-decoration:	none;
+}
+
+.tweeter_detail .text a:hover {
+	text-decoration:	underline;
+}
+
+.tweeter_detail .text .name,
+.tweeter_detail .text .location {
+	font-size:			12px;
+	color:				#333;
 }

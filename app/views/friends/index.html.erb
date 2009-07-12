@@ -1,3 +1,4 @@
+<!--  add search form stuff  -->
 <div id="SearchContainer">
 	
 	<!--  Instructions  -->
@@ -6,30 +7,57 @@
 	</h2>
 	
 	<!--  Search Form  -->
-	<% remote_form_for :search, :url => "/friends/search" do |f| %>
-
+	<% form_tag friends_path, :id => "SearchForm", :name => "SearchForm", :method => :get do %>
 		<span class="inline">
 			<label for="tweeter1">Screen Name:</label>
-			<%= f.text_field :tweeter1, :class => "main" %>
+			<%= text_field_tag 	:tweeter1, 
+								nil, 
+								:class => "main",
+								:value => params[:tweeter1]
+			%>
 			
 			<br/>
 
 			<label for="tweeter2">Screen Name:</label>
-			<%= f.text_field :tweeter2, :class => "main" %>
+			<%= text_field_tag 	:tweeter2, 
+								nil, 
+								:class => "main",
+								:value => params[:tweeter2]
+			%>
 		</span>
 		<span class="inline">
-			<%= f.radio_button :type, "degrees", :checked => "checked" %>Find degrees of separation
+			<%= radio_button_tag :type, "degrees", (@type.blank? || @type == "degrees") %> Find degrees of separation
 			<br />
-			<%= f.radio_button :type, "friends" %>Find shared friends
+			<%= radio_button_tag :type, "friends", (@type == "friends") %> Find shared friends
+			<br />
+			<%= radio_button_tag :type, "followers", (@type == "followers") %> Find shared followers
 		</span>
 		<span class="inline">
-			<%= f.submit "Search", :class => "button" %>
+			<%= submit_tag "Search", :id => "commit", :class => "button" %>
 		</span>
-
 	<% end %>
 </div>
 
-<!--  Search results area  -->
+
+<!--  add search results stuff  -->
 <div id="ResultContainer">
-	Need to write remote forms and rjs templates to use this area.
+	
+	<% if @is_submitted == true %>
+	
+		<hr>
+	
+		<p><%= "#{@t1.screen_name} = #{@t1.name}" %></p>
+		<p><%= "#{@t2.screen_name} = #{@t2.name}" %></p>
+	
+		<hr>
+	
+		<h3><%= get_results_header(@type) %></h3>
+
+		
+		<%= will_paginate @collection %>
+		<hr>
+		<%= render :partial => "friends/api_id", :collection => @collection %>
+		<%= will_paginate @collection %>
+	
+	<% end %>
 </div>

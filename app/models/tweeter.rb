@@ -4,16 +4,10 @@ class Tweeter < ActiveRecord::Base
   # Core Definitions
   #----------------------------------------------------------------------------
   
-  # Add relationships
-  has_and_belongs_to_many :friends, 
-                          :class_name               => "Tweeter", 
-                          :join_table               => "friends", 
-                          :foreign_key              => "tweeter_id", 
-                          :association_foreign_key  => "friend_id"
-  
-  
   # Add validations
-  validates_presence_of :name, :screen_name
+  validates_presence_of :name, :screen_name, :image_url
+  
+  attr_accessor :friend_id_lookups
   
   
   
@@ -22,116 +16,96 @@ class Tweeter < ActiveRecord::Base
   #----------------------------------------------------------------------------
   
   # This class method encapsulates the difference between looking up a tweeter
-  # in the cache versus looking him up via the api. 
+  # by api id in the cache versus looking him up via the api. 
+  def self.get_by_api_id(api_id)
+    d_obj = Tweeter.get_from_database_by_api_id(api_id)
+    if d_obj.nil?
+      a_obj = Tweeter.get_from_api(api_id)
+      if a_obj
+        d_obj = Tweeter.create_new_and_save(a_obj)
+      end
+    end
+    d_obj
+  end
+  
+  
+  # This class method encapsulates the difference between looking up a tweeter
+  # by screen name in the cache versus looking him up via the api. 
   def self.get_by_screen_name(screen_name)
-    d_friend = Tweeter.get_database_user(screen_name)
-    if d_friend.nil?
-      t_user = Tweeter.get_twitter_user(screen_name)
-      if t_user
-        d_friend = Tweeter.create_new_and_save(t_user)
+    d_obj = Tweeter.get_from_database_by_screen_name(screen_name)
+    if d_obj.nil?
+      a_obj = Tweeter.get_from_api(screen_name)
+      if a_obj
+        d_obj = Tweeter.create_new_and_save(a_obj)
       end
     end
-    d_friend
+    d_obj
   end
-  
-  # This instance method determines the friends shared by the argument and the
-  # instance.
-  def get_shared_friends(other_tweeter)
-    my_friends  = get_friends
-    her_friends = other_tweeter.get_friends
-    shared      = []
-    if my_friends.length && her_friends.length
-      my_friends.each do |m_f|
-        her_friends.each do |item|                                  # Change by @mdinstuhl.  His first
-          shared << item if m_f.screen_name == item.screen_name     # contributions to an open source
-        end                                                         # project.  Huzzah!
-      end
-    end
-    shared
-  end
-  
-  # This instance method abstracts the difference between friends retireved from
-  # the database and those retrieved from the api.
-  def get_friends
-    a = []
-    if friends.length > 0
-      a = friends 
-    else
-      t_user    = Tweeter.get_twitter_user(screen_name)
-      t_friends = t_user.friends
-      t_friends.each do |t_friend|
-        d_friend = Tweeter.get_database_user(t_friend.screen_name)
-        if d_friend.nil?
-          d_friend = Tweeter.create_new_and_save(t_friend)
-        end
-        friends << d_friend
-        a       << d_friend
-      end
-      save
-    end
-    a
-  end
-  
 
+  
+  # This instance method returns an array of friend api ids for this tweeter.
+  def friend_ids
+    a = TWITTER_CLIENT.graph(:friends, api_id) || []
+    a.sort!
+  end
+  
+  # This instance method returns an array of follower api ids for this tweeter.
+  def follower_ids
+    a = TWITTER_CLIENT.graph(:followers, api_id) || []
+    a.sort!
+  end
+  
+  
 
   #----------------------------------------------------------------------------
   # Private methods
   #----------------------------------------------------------------------------
   private
   
+  
   # This class method uses the supplied twitter user to create a new model
   # object and store it in the database.  It returns the newly saved model 
   # object.
   def self.create_new_and_save(api_user)
     t             = Tweeter.new
+    t.api_id      = api_user.id
     t.name        = api_user.name
     t.screen_name = api_user.screen_name
+    t.location    = api_user.location
+    t.image_url   = api_user.profile_image_url
     t.save
     t
   end
   
-  # This class method uses the supplied twitter screen name to return the 
+  
+  # This class method uses the supplied twitter screen name or api id to 
+  # return the corresponding user object from the twitter api.
+  def self.get_from_api(screen_name)
+    TWITTER_CLIENT.user(screen_name)
+  end
+  
+  
+  # This class method uses the supplied twitter api id to return the 
   # corresponding user object from the database.
-  def self.get_database_user(screen_name)
+  def self.get_from_database_by_api_id(api_id)
     f = nil
-    a = Tweeter.find(:all, :conditions => ["screen_name = ?", screen_name])
+    a = Tweeter.find(:all, :conditions => ["api_id = ?", api_id])
     if (a.length > 0) 
       f = a[0]
     end
     f
   end
   
-  # This method uses hard-coded credentials to return an authenticated client
-  # to the twitter API
-  def self.get_twitter_client
-    @@twitter ||= Twitter::Client.new(
-      :login    => Tweeter.get_twitter_client_username,
-      :password => Tweeter.get_twitter_client_password
-    )
-  end
-  
-  # This method returns the username from the twitter config file.
-  def self.get_twitter_client_username
-    config = Tweeter.get_twitter_config
-    config["login"]["username"]
-  end
-  
-  # This method returns the username from the twitter config file.
-  def self.get_twitter_client_password
-    config = Tweeter.get_twitter_config
-    config["login"]["password"]
-  end
-  
-  # This method returns the twitter config file.
-  def self.get_twitter_config
-    YAML.load_file("config/twitter.yml")
-  end
   
   # This class method uses the supplied twitter screen name to return the 
-  # corresponding user object from the twitter api.
-  def self.get_twitter_user(screen_name)
-    Tweeter.get_twitter_client
-    @@twitter.user(screen_name)
+  # corresponding user object from the database.
+  def self.get_from_database_by_screen_name(screen_name)
+    f = nil
+    a = Tweeter.find(:all, :conditions => ["screen_name = ?", screen_name])
+    if (a.length > 0) 
+      f = a[0]
+    end
+    f
   end
   
 end

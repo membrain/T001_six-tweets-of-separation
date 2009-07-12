@@ -9,7 +9,7 @@ var app  = {}
 
 // This function forces focus to the first field of the search form.
 app.setFocus = function() {
-	var field = $("search_tweeter1")
+	var field = $("tweeter1")
 	if (field) {
 		field.focus();
 	}
@@ -25,7 +25,7 @@ app.setFocus = function() {
 Event.observe(window, "load", function() {
 	
 	// Get dom references
-	var button = $("search_submit");
+	var button = $("commit");
 	var result = $("ResultContainer");
 	
 	// Listen for events from search button
