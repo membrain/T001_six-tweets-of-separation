@@ -44,19 +44,45 @@
 	
 	<% if @is_submitted == true %>
 	
-		<hr>
-	
-		<p><%= "#{@t1.screen_name} = #{@t1.name}" %></p>
-		<p><%= "#{@t2.screen_name} = #{@t2.name}" %></p>
-	
-		<hr>
+		<div class="header_container">
+			<span class="header_left">
+				<span class="header_detail">
+					<%= render 	:partial => "friends/api_id", 
+								:locals  => {
+									:api_id => @t1.api_id
+								} 
+					%>
+				</span>
+			</span>
+			<span class="header_right">
+				<span class="header_detail">
+					<%= render 	:partial => "friends/api_id", 
+								:locals  => {
+									:api_id => @t2.api_id
+								} 
+					%>
+				</span>
+			</span>
+		</div>
 	
 		<h3><%= get_results_header(@type) %></h3>
 
 		
 		<%= will_paginate @collection %>
-		<hr>
-		<%= render :partial => "friends/api_id", :collection => @collection %>
+		<div class="list_container">
+		<% @collection.each_with_index do |item, index| %>
+			<% style_class = index.odd? ? "odd" : "even" %>
+			<div class="list_detail">
+				<div class="<%= style_class %>">
+					<%= render 	:partial => "friends/api_id", 
+								:locals  => {
+									:api_id => item
+								} 
+					%>
+				</div>
+			</div>
+		<% end %>
+		</div>
 		<%= will_paginate @collection %>
 	
 	<% end %>

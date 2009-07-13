@@ -117,7 +117,7 @@ a:focus {
 
 #PageBody h3 {
 	margin:				0;
-	padding:			10px 0 20px 0;
+	padding:			10px 4px;
 	font-size:			16px;
 	color:				#DD7700;
 }
@@ -157,11 +157,6 @@ a:focus {
 	min-height:			400px;
 }
 
-
-
-/*-------------------------------------------------------
-   containers
--------------------------------------------------------*/
 
 
 /*-------------------------------------------------------
@@ -305,38 +300,166 @@ a:focus {
    search results
 -------------------------------------------------------*/
 
-.tweeter_detail {
-	padding:			8px 0;
+.header_container {
+	margin:				0 0 20px 0;
+	padding:			0;
+	border:				1px solid #352724;
+	background-color:	#E5F0F5;
 }
 
-.tweeter_detail .image {
+.header_left {
+	display:			inline-block;
+	width:				48%;
+	height:				100%;
+	border-right:		1px solid #352724;
+}
+
+.header_detail {
+	display:			inline-block;
+	padding:			12px;
+}
+
+.header_detail .image {
 	display:			inline-block;
 	padding-right:		8px;
 }
 
-.tweeter_detail img {
+.header_detail img {
 	border:				1px solid #352724;
 }
 
-.tweeter_detail .text {
+.header_detail .text {
 	display:			inline-block;
 	vertical-align:		top;
 	padding-top:		2px;
 }
 
-.tweeter_detail .text a {
+.header_detail .text a {
 	font-size:			16px;
 	font-weight:		bold;
 	color:				#0084B4;
 	text-decoration:	none;
 }
 
-.tweeter_detail .text a:hover {
+.header_detail .text a:hover {
 	text-decoration:	underline;
 }
 
-.tweeter_detail .text .name,
-.tweeter_detail .text .location {
+.header_detail .text .name,
+.header_detail .text .location {
 	font-size:			12px;
 	color:				#333;
+}
+
+.list_container {
+	margin:				0;
+	padding:			0;
+	border-top:			1px solid #DDD;
+}
+
+.list_detail {
+	border-bottom:		1px solid #DDD;
+}
+
+.list_detail .even,
+.list_detail .odd {
+	padding:			8px;
+}
+
+.list_detail .even {	
+	background-color:	#F6F6FF;
+}
+
+.list_detail .image {
+	display:			inline-block;
+	padding-right:		8px;
+}
+
+.list_detail img {
+	border:				1px solid #352724;
+}
+
+.list_detail .text {
+	display:			inline-block;
+	vertical-align:		top;
+	padding-top:		2px;
+}
+
+.list_detail .text a {
+	font-size:			16px;
+	font-weight:		bold;
+	color:				#0084B4;
+	text-decoration:	none;
+}
+
+.list_detail .text a:hover {
+	text-decoration:	underline;
+}
+
+.list_detail .text .name,
+.list_detail .text .location {
+	font-size:			12px;
+	color:				#333;
+}
+
+
+.pagination {
+	margin:				0;
+	padding:			20px 4px;
+	font-size:			11px;
+}
+
+.pagination a,
+.pagination .current {
+	margin:				0 1px;
+	padding:			2px 4px;
+	text-decoration:	none;
+}
+
+.pagination .prev_page,
+.pagination a.prev_page:link,
+.pagination a.prev_page:visited,
+.pagination a.prev_page:hover, 
+.pagination .next_page,
+.pagination a.next_page:link,
+.pagination a.next_page:visited,
+.pagination a.next_page:hover {
+	padding:			1px 4px;
+}
+
+.pagination {
+	color:				#666;
+}
+
+.pagination a:link,
+.pagination a:visited {
+	color:				#000;
+	border:				1px solid #352724;
+}
+
+.pagination a:hover {
+	background:			#0084B4;
+	color:				#FFF;
+	border:				1px solid #352724;
+}
+
+.pagination a.prev_page:link,
+.pagination a.prev_page:visited, 
+.pagination a.next_page:link,
+.pagination a.next_page:visited {
+	color:				#0084B4;
+	border:				none;
+}
+
+.pagination a.prev_page:hover,
+.pagination a.next_page:hover {
+	background:			#0084B4;
+	color:				#FFF;
+	border:				none;
+}
+
+.pagination .current {
+	background:			#849A44;
+	color:				#FFF;
+	border:				1px solid #352724;
 }
