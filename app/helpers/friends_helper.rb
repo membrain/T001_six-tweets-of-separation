@@ -35,11 +35,11 @@ module FriendsHelper
   def get_results_header(type = nil)
     case type
       when "degrees"
-        "Degrees of Separation"
+        "#{pluralize(@collection.total_entries-2, "Degree")} of Separation"
       when "followers"
-        "Shared Followers"
+        "#{@collection.total_entries} Shared Followers"
       when "friends"
-        "Shared Friends"
+        "#{@collection.total_entries} Shared Friends"
       else
         ""
     end
